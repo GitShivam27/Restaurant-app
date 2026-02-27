@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Restaurant Multi Kitchen</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Restaurant Multi Kitchen</h1>
+    <p>Waiter order and billing app</p>
+  </header>
+
+  <main>
+    <p id="appStatus" class="app-status">Loading...</p>
+    <section class="panel">
+      <h2>Order Details</h2>
+      <div class="row">
+        <label>Table No
+          <input id="tableNo" type="number" min="1" placeholder="e.g. 12" />
+        </label>
+        <label>Customer Number
+          <input id="customerPhone" type="tel" placeholder="e.g. 9876543210" />
+        </label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Menu</h2>
+      <div class="tabs">
+        <button class="tab active" data-category="veg">North Indian Veg</button>
+        <button class="tab" data-category="nonveg">North Indian Non-Veg</button>
+      </div>
+      <div id="menuList" class="menu-list"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Current Order</h2>
+      <ul id="cartList" class="cart-list"></ul>
+      <div class="summary">
+        <p>Subtotal: ₹<span id="subtotal">0</span></p>
+        <p>Tax (5%): ₹<span id="tax">0</span></p>
+        <p class="total">Total: ₹<span id="total">0</span></p>
+      </div>
+      <div class="row">
+        <button id="sendToKitchen" class="primary">Send to Kitchen</button>
+        <button id="clearOrder">Clear</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Billing & Payment</h2>
+      <label>Payment Method
+        <select id="paymentMode">
+          <option value="upi_qr">UPI QR</option>
+          <option value="cash">Cash</option>
+          <option value="card">Card</option>
+        </select>
+      </label>
+      <div id="upiBox" class="upi-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=multikitchen@upi&pn=RestaurantMultiKitchen" alt="UPI QR" />
+        <p>Scan and pay to <strong>multikitchen@upi</strong></p>
+      </div>
+      <button id="markPaid" class="primary">Mark as Paid</button>
+      <p id="paymentStatus" class="status">Payment Pending</p>
+    </section>
+
+    <section class="panel">
+      <h2>Kitchen Queue (Demo)</h2>
+      <ul id="kitchenQueue" class="kitchen-list"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
